@@ -1,4 +1,4 @@
-site_name: Fraud Detection Models
+site_name: Previsão de Churn de Clientes
 theme:
   palette:
     primary: black
