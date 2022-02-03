@@ -11,8 +11,10 @@ seaborn = "*"
 scikit-learn = "*"
 mkdocs-material = "*"
 mkdocs-mermaid2-plugin = "*"
+gdown = "*"
 
 [dev-packages]
+ipykernel = "*"
 
 [requires]
 python_version = "3.9"
