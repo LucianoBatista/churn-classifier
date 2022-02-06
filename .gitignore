@@ -1,1 +1,6 @@
 .vscode
+.idea
+.ipynb_checkpoints
+export.html
+src/__pycache__/
+src/plots/__pycache__/
