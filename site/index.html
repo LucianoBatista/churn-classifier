@@ -115,30 +115,30 @@
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#churn-de-clientes">
-    Churn de Clientes
+     Churn de Clientes
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#objetivos-do-desafio">
-    Objetivos do Desafio
+     Objetivos do Desafio
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#pontuacao-no-desafio">
-    Pontuação no Desafio
+     Pontuação no Desafio
   </a>
 </li>
 </ul>
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="metrics/">
-        Métricas
+<a class="md-nav__link" href="eda/">
+        Análise Exploratória de Dados
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="eda/">
-        Análise Exploratória de Dados
+<a class="md-nav__link" href="metrics/">
+        Métricas
       </a>
 </li>
 </ul>
@@ -157,17 +157,17 @@
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#churn-de-clientes">
-    Churn de Clientes
+     Churn de Clientes
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#objetivos-do-desafio">
-    Objetivos do Desafio
+     Objetivos do Desafio
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#pontuacao-no-desafio">
-    Pontuação no Desafio
+     Pontuação no Desafio
   </a>
 </li>
 </ul>
@@ -177,17 +177,18 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
+<p><img alt="img-desafio-ensembles" src="img/ensembles.png"/></p>
 <h1 id="desafio-de-churn">Desafio de Churn</h1>
-<h2 id="churn-de-clientes">Churn de Clientes</h2>
+<h2 id="churn-de-clientes"><span class="twemoji"><svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M319.9 320c57.41 0 103.1-46.56 103.1-104s-46.54-104-103.1-104c-57.41 0-103.1 46.56-103.1 104-.9 57.4 45.7 104 103.1 104zm50 32h-99.8C191.6 352 128 411.7 128 485.3c0 14.8 12.7 26.7 28.4 26.7h327.2c15.7 0 28.4-11.9 28.4-26.7 0-73.6-63.6-133.3-142.1-133.3zM512 160c44.18 0 80-35.82 80-80S556.2 0 512 0c-44.18 0-80 35.82-80 80s35.8 80 80 80zm-328.1 56c0-5.449.982-10.63 1.609-15.91C174.6 194.1 162.6 192 149.9 192H88.08C39.44 192 0 233.8 0 285.3 0 295.6 7.887 304 17.62 304h199.5c-20.42-23.8-33.22-54.3-33.22-88zM128 160c44.18 0 80-35.82 80-80S172.2 0 128 0C83.82 0 48 35.82 48 80s35.82 80 80 80zm423.9 32h-61.84c-12.8 0-24.88 3.037-35.86 8.24.6 5.26 1.6 10.36 1.6 15.76 0 33.71-12.78 64.21-33.16 88h199.7c9.76 0 17.66-8.4 17.66-18.7 0-51.5-39.4-93.3-88.1-93.3z"></path></svg></span> Churn de Clientes</h2>
 <p>O desafio de prever se um cliente irá sair da Base de Clientes Ativos (também conhecido como churn) não é um problema exclusivo do varejo, sendo uma área de estudos constante da maioria das indústrias e empresas de serviços que dependem da retenção.</p>
 <p>A solução traz muito valor, se tiver alto índice de acertos pode ser usada para elencar automaticamente clientes com alto risco de churn para uma promoção agressiva com o objetivo retê-lo na base.</p>
 <p>Também há muito valor nos insights e na validação de hipóteses que acontece durante o processo de análise do problema e das soluções. <strong>Pode-se verificar através de experimentação que, por exemplo, um cliente que compra exclusivamente em datas especiais ou eventos promocionais tem uma chance menor de ser um churn do que um que compra grandes volumes do mesmo produto.</strong></p>
-<h2 id="objetivos-do-desafio">Objetivos do Desafio</h2>
+<h2 id="objetivos-do-desafio"><span class="twemoji"><svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M288 256c0 17.7-14.3 32-32 32s-32-14.3-32-32 14.3-32 32-32 32 14.3 32 32zm-176 0c0-79.5 64.5-144 144-144s144 64.5 144 144-64.5 144-144 144-144-64.5-144-144zm144 80c44.2 0 80-35.8 80-80s-35.8-80-80-80-80 35.8-80 80 35.8 80 80 80zm256-80c0 141.4-114.6 256-256 256S0 397.4 0 256 114.6 0 256 0s256 114.6 256 256zM256 64C149.1 64 64 149.1 64 256c0 106 85.1 192 192 192 106 0 192-86 192-192 0-106.9-86-192-192-192z"></path></svg></span> Objetivos do Desafio</h2>
 <p>Nesse desafio, construído em uma parceria da Tera e o Luizalabs, o objetivo principal será construir algumas soluções baseadas em machine learning para prever se um dado cliente do e-commerce do Magalu continuará comprando na plataforma em 2020 usando algumas características próprias do cliente e seu histórico de compras no ano anterior. No final, algumas dessas soluções devem ser combinadas em um ensemble para criar uma solução única com o objetivo de alavancar ainda mais os resultados.</p>
 <p>Para que o objetivo principal seja cumprido, será necessário <strong>construir uma forma de visualização das soluções criadas e a comparação com o modelo baseline e com o modelo de ensemble criados no processo</strong>. O formato sugerido é um <strong>tabela de resultados</strong> contendo as métricas de sucesso de cada modelo criado.</p>
 <p>O objetivo secundário é o <strong>levantamento de hipóteses e insights que surgirem durante as experimentações.</strong> É interessante fazer isso desde o início como parte da análise exploratória, <strong>documentando qualquer indício de informação nova sobre o problema.</strong> Também é uma boa prática avaliar os modelos treinados, seja através da exploração de seus parâmetros (por exemplo, os <em>pesos de um modelo linear</em>) ou usando técnicas avançadas como o <em>SHAP</em>, buscando relacionar como as features influenciam as respostas do modelo.</p>
 <p>A forma mais simples de cumprir o objetivo secundário é a <strong>documentação das etapas</strong> de análise e exploração de forma resumida em um relatório que compila as principais hipóteses e insights. Esse relatório pode ser um documento de texto na forma de um diário de bordo ou mesmo uma seção do próprio notebook em que a solução foi desenvolvida.</p>
-<h2 id="pontuacao-no-desafio">Pontuação no Desafio</h2>
+<h2 id="pontuacao-no-desafio"><span class="twemoji"><svg viewbox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="m381.2 150.3 143.7 21.2c11.9 1.7 21.9 10.1 25.7 21.6 3.8 11.6.7 24.2-7.9 32.8L438.5 328.1l24.6 146.6c2 12-2.9 24.2-12.9 31.3-9.9 7.1-23 8-33.7 2.3l-128.4-68.5-128.3 68.5c-10.8 5.7-23.9 4.8-33.8-2.3-9.9-7.1-14.9-19.3-12.8-31.3l24.6-146.6L33.58 225.9c-8.61-8.6-11.67-21.2-7.89-32.8 3.77-11.5 13.74-19.9 25.73-21.6L195 150.3l64.4-132.33C264.7 6.954 275.9-.04 288.1-.04c12.3 0 23.5 6.994 28.8 18.01l64.3 132.33z"></path></svg></span> Pontuação no Desafio</h2>
 <p>O desafio também possui um dataset de pontuação, contendo dados de clientes que não estão nem nas bases de treino nem nas de teste. Para esses clientes não foram disponibilizadas as respostas (targets), sendo portanto impossível verificar durante o desenvolvimento da solução se o modelo está acertando ou não.</p>
 <p>O objetivo desse dataset é permitir, de forma justa, que os alunos possam comparar suas melhores soluções com as dos outros. Através desse link é possível fazer o envio do arquivo de respostas do desafio. No fim do desafio, será mostrado o ranking dos envios dos alunos.</p>
 <p>Let the Games Begin! =</p>
@@ -197,13 +198,13 @@
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Next: Métricas" class="md-footer__link md-footer__link--next" href="metrics/" rel="next">
+<a aria-label="Next: Análise Exploratória de Dados" class="md-footer__link md-footer__link--next" href="eda/" rel="next">
 <div class="md-footer__title">
 <div class="md-ellipsis">
 <span class="md-footer__direction">
                 Next
               </span>
-              Métricas
+              Análise Exploratória de Dados
             </div>
 </div>
 <div class="md-footer__button md-icon">

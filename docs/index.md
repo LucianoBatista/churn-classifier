@@ -3,9 +3,11 @@ title: Home
 author: Luciano
 ---
 
+![img-desafio-ensembles](img/ensembles.png)
+
 # Desafio de Churn
 
-## Churn de Clientes
+## :fontawesome-solid-users: Churn de Clientes
 
 O desafio de prever se um cliente irá sair da Base de Clientes Ativos (também conhecido como churn) não é um problema exclusivo do varejo, sendo uma área de estudos constante da maioria das indústrias e empresas de serviços que dependem da retenção.
 
@@ -13,7 +15,7 @@ A solução traz muito valor, se tiver alto índice de acertos pode ser usada pa
 
 Também há muito valor nos insights e na validação de hipóteses que acontece durante o processo de análise do problema e das soluções. **Pode-se verificar através de experimentação que, por exemplo, um cliente que compra exclusivamente em datas especiais ou eventos promocionais tem uma chance menor de ser um churn do que um que compra grandes volumes do mesmo produto.**
 
-## Objetivos do Desafio
+## :fontawesome-solid-bullseye: Objetivos do Desafio
 
 Nesse desafio, construído em uma parceria da Tera e o Luizalabs, o objetivo principal será construir algumas soluções baseadas em machine learning para prever se um dado cliente do e-commerce do Magalu continuará comprando na plataforma em 2020 usando algumas características próprias do cliente e seu histórico de compras no ano anterior. No final, algumas dessas soluções devem ser combinadas em um ensemble para criar uma solução única com o objetivo de alavancar ainda mais os resultados.
 
@@ -23,7 +25,7 @@ O objetivo secundário é o **levantamento de hipóteses e insights que surgirem
 
 A forma mais simples de cumprir o objetivo secundário é a **documentação das etapas** de análise e exploração de forma resumida em um relatório que compila as principais hipóteses e insights. Esse relatório pode ser um documento de texto na forma de um diário de bordo ou mesmo uma seção do próprio notebook em que a solução foi desenvolvida.
 
-## Pontuação no Desafio
+## :fontawesome-solid-star: Pontuação no Desafio
 
 O desafio também possui um dataset de pontuação, contendo dados de clientes que não estão nem nas bases de treino nem nas de teste. Para esses clientes não foram disponibilizadas as respostas (targets), sendo portanto impossível verificar durante o desenvolvimento da solução se o modelo está acertando ou não.
 

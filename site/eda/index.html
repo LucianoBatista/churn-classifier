@@ -103,11 +103,6 @@
         Home
       </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../metrics/">
-        Métricas
-      </a>
-</li>
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
 <label class="md-nav__link md-nav__link--active" for="__toc">
@@ -143,8 +138,42 @@
     Onde está localizado a maior quantidade de clientes da Magalu?
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#podemos-dizer-algo-sobre-os-metodos-de-pagamentos-escolhidos-pelos-clientes">
+    Podemos dizer algo sobre os métodos de pagamentos escolhidos pelos clientes?
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#source-e-device-possuem-um-comportamento-parecido-com-os-metodos-de-pagamento">
+    source e device possuem um comportamento parecido com os métodos de pagamento?
+  </a>
+<nav aria-label="source e device possuem um comportamento parecido com os métodos de pagamento?" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#source">
+    Source
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#device">
+    Device
+  </a>
+</li>
 </ul>
 </nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#como-se-dao-os-pedidos-em-funcao-dos-feriados">
+    Como se dão os pedidos em função dos feriados?
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../metrics/">
+        Métricas
+      </a>
 </li>
 </ul>
 </nav>
@@ -180,6 +209,35 @@
     Onde está localizado a maior quantidade de clientes da Magalu?
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#podemos-dizer-algo-sobre-os-metodos-de-pagamentos-escolhidos-pelos-clientes">
+    Podemos dizer algo sobre os métodos de pagamentos escolhidos pelos clientes?
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#source-e-device-possuem-um-comportamento-parecido-com-os-metodos-de-pagamento">
+    source e device possuem um comportamento parecido com os métodos de pagamento?
+  </a>
+<nav aria-label="source e device possuem um comportamento parecido com os métodos de pagamento?" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#source">
+    Source
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#device">
+    Device
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#como-se-dao-os-pedidos-em-funcao-dos-feriados">
+    Como se dão os pedidos em função dos feriados?
+  </a>
+</li>
 </ul>
 </nav>
 </div>
@@ -187,28 +245,28 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<p>Antes de iniciar, vamos deixar claro o que um churn aqui nesse desafio.</p>
+<h1 id="analise-exploratoria-de-dados">Análise Exploratória de Dados</h1>
+<p><img alt="img-churn" src="../img/churn.png"/></p>
+<p>Antes de iniciar, vamos deixar claro <strong>o que representa um churn aqui nesse desafio.</strong></p>
 <blockquote>
 <p>Churn é todo cliente que deixa de comprar na Magalu após um certo período de tempo.</p>
 </blockquote>
-<h1 id="analise-exploratoria-de-dados">Análise Exploratória de Dados</h1>
-<p>Aqui iremos iniciar nossa análise pelo dataset de treino, que possui algumas informações básicas dos clientes. Mas, antes disso, como estamos falando de um problema de classificação, vale a pena entender o quanto os dados estão desbalanceados.</p>
-<h2 id="quanto-nosso-dado-esta-desbalanceado">Quanto nosso dado está desbalanceado?</h2>
+<p>Iremos iniciar nossa análise pelo dataset de treino, porém parte dessa análise foi aplicada no dataset de teste no intuito de ver se alguns padrões se repetiam, já que a base de teste foi fornecida pelo desafio.</p>
 <blockquote>
-<p>Lembrando que o código completo e os notebooks das EDAs podem ser encontrados no <a href="https://github.com/LucianoBatista/churn-classifier">repositório</a>.</p>
+<p>Lembrando que o código completo e os notebooks com todas as EDAs podem ser encontrados no <a href="https://github.com/LucianoBatista/churn-classifier">repositório</a>.</p>
 </blockquote>
+<p>Como estamos falando de um problema de classificação, vale a pena iniciar a análise entendendo como os dados estão balanceados.</p>
+<h2 id="quanto-nosso-dado-esta-desbalanceado">Quanto nosso dado está desbalanceado?</h2>
 <div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1"># is_churn proportion</span>
 <a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="n">df</span> <span class="o">=</span> <span class="n">client_tr</span><span class="p">[</span><span class="s2">"is_churn"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 <a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>
 <a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="n">_</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"is_churn"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">client_tr</span><span class="p">)</span>
 <a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
-<ul>
-<li>IMG_CLASSES</li>
-</ul>
-<p>Aqui temos um dados que está um pouco desbalanceado, sendo cerca de 82% de não ocorrência de churn, contra 18% que efetivamente deram churn.</p>
+<p><img alt="img-churn-distribution" src="../img/churn-dist.png"/></p>
+<p>Aqui vemos que nossos dados está numa proporção de 82% sendo não ocorrência de churn, contra 18% que efetivamente deram churn. Esse desbalanceamento pode impactar na etapa de modelagem, sendo assim, uma abordagem interessante seria aplicação de alguma técnica de balanceamento.</p>
 <h2 id="como-as-idades-estao-distribuidas">Como as idades estão distribuídas?</h2>
-<p>Nesse ponto, achei mais útil converter a variável de data de nascimento (<code>birthdate</code>) em idade. Após fazer essa conversão, foi possível observar como a variável está se comportando em relação ao nosso target.</p>
+<p>Achei mais útil converter a variável de data de nascimento (<code>birthdate</code>) em idade. Após fazer essa conversão, foi possível observar como a variável está se comportando em relação ao nosso target.</p>
 <div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="c1"># convertendo em idade</span>
 <a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="n">client_tr</span><span class="p">[</span><span class="s2">"age"</span><span class="p">]</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">year</span> <span class="o">-</span> <span class="n">client_tr</span><span class="p">[</span><span class="s2">"birthdate"</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span>
 <a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a>
@@ -216,43 +274,84 @@
 <a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="n">_</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">ecdfplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"age"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">client_tr</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">"is_churn"</span><span class="p">)</span>
 <a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
-<ul>
-<li>IMG_AGE_CHURN</li>
-</ul>
+<p><img alt="img-age-ecdf" src="../img/age-dist.png"/></p>
 <p>Pelas distribuições, vemos que existe uma maior proporção de churn em pessoas com idades mais avançadas.</p>
-<h2 id="como-o-genero-sexual-gender-se-comporta-em-relacao-ao-target">Como o Gênero Sexual (<code>gender</code>) se comporta em relação ao target?</h2>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="n">_</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"gender"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">client_tr</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">"is_churn"</span><span class="p">)</span>
+<p>E essa é a distribuição sem distinção de churn:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="n">_</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"age"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">client_tr</span><span class="p">)</span>
+<a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
-<p>Aparentemente, pessoas de ambos os gêneros possuem uma distribuição semelhante a do próprio target. Como menor proporção de churn.</p>
+<p><img alt="img-age-distribution" src="../img/gender-dist.png"/></p>
+<p>Podemos ver que existem algumas pessoas abaixo dos 15 anos, onde a maioria não representou churn (<em>verificação feita no notebook</em>), mas também temos algumas possoas acima dos 100 anos, esses extremos podem precisar de uma segunda investigação.</p>
+<h2 id="como-o-genero-sexual-gender-se-comporta-em-relacao-ao-target">Como o Gênero Sexual (<code>gender</code>) se comporta em relação ao target?</h2>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="n">_</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"gender"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">client_tr</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">"is_churn"</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="img-gender-count" src="../img/gender-count.png"/></p>
+<p>Aparentemente, pessoas de ambos os gêneros possuem uma distribuição semelhante a da própria feature target (<code>is_churn</code>).</p>
 <h2 id="onde-esta-localizado-a-maior-quantidade-de-clientes-da-magalu">Onde está localizado a maior quantidade de clientes da Magalu?</h2>
-<p>Nós temos, em todos os datasets, duas variáveis de Estado:</p>
+<p>Nós temos, em todos os datasets fornecidos no desafio, duas variáveis de Estado:</p>
 <ul>
 <li><code>state</code>: local onde o cliente reside.</li>
 <li><code>delivery_state</code>: local de destino da entrega do pedido.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="c1"># figure configuration</span>
-<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="n">fig_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-<a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">fig_size</span><span class="p">)</span>
-<a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a>
-<a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="c1"># data</span>
-<a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="n">df</span> <span class="o">=</span> <span class="n">client_tr</span><span class="p">[</span><span class="s2">"state"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a>
-<a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="c1"># plotting</span>
-<a href="#__codelineno-3-9" id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="n">_</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"index"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"state"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_v2</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">"state"</span><span class="p">]))</span>
-<a href="#__codelineno-3-10" id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="c1"># plot configuration</span>
+<a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="n">fig_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">fig_size</span><span class="p">)</span>
+<a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a>
+<a href="#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="c1"># data</span>
+<a href="#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="n">df</span> <span class="o">=</span> <span class="n">client_tr</span><span class="p">[[</span><span class="s2">"state"</span><span class="p">,</span> <span class="s2">"is_churn"</span><span class="p">]]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<a href="#__codelineno-4-7" id="__codelineno-4-7" name="__codelineno-4-7"></a>
+<a href="#__codelineno-4-8" id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="c1"># alternando entre True e False para o churn</span>
+<a href="#__codelineno-4-9" id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="n">_</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"state"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">"is_churn"</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="mi">0</span><span class="p">]))</span>
+<a href="#__codelineno-4-10" id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"States Distribution with Churn = True"</span><span class="p">)</span>
+<a href="#__codelineno-4-11" id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
+<p><img alt="img-state-distribution" src="../img/state-churn-true.png"/></p>
+<p><img alt="img-state-distribution-false" src="../img/state-churn-false.png"/></p>
+<p>Nesse primeiro momento, estaremos olhando apenas para <code>state</code>. E, conseguimos ver que existe uma grande concentração de clientes no <strong>Estado st15</strong>, muito mais que nos Estados subsequentes. </p>
+<p>Veja também que a distribuição é praticamente idêntica considerando apenas casos de <em>churn</em> e <em>não churn</em>.</p>
+<p><em>E o estado onde mais entrega?</em></p>
 <ul>
-<li>IMG_STATE_DIST</li>
+<li>TODO!</li>
 </ul>
-<p>Nesse primeiro momento, estaremos olhando apenas para <code>state</code>. E, conseguimos ver que existe uma grande concentração de clientes no <strong>Estado st15</strong>, muito mais que nos seguintes Estados. </p>
-<p>Veja também que a distribuição é praticamente idêntica para <em>Churn</em> e <em>não Churn</em>.</p>
+<h2 id="podemos-dizer-algo-sobre-os-metodos-de-pagamentos-escolhidos-pelos-clientes">Podemos dizer algo sobre os métodos de pagamentos escolhidos pelos clientes?</h2>
+<p>No nosso dataset de <code>orders</code>, vemos que existem 14 métodos de pagamento diferentes, algums sendo mais utilizados que outros. Mas, observando a distribuição, vemos que existe uma preferência muito grande pelo método <code>pm5</code>, sendo consequentemente o maior responsável pela presença de churn. Outros métodos de pagamento possuem uma proporção muito baixa de churn.</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="n">df</span> <span class="o">=</span> <span class="n">or_pr_cl_df</span><span class="p">[[</span><span class="s2">"payment_method"</span><span class="p">,</span> <span class="s2">"is_churn"</span><span class="p">]]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a>
+<a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">fig_dim</span><span class="p">)</span>
+<a href="#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a>
+<a href="#__codelineno-5-5" id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="n">_</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"payment_method"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">"is_churn"</span><span class="p">)</span>
+<a href="#__codelineno-5-6" id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="img-payment-method-count" src="../img/payment-method-count.png"/></p>
+<h2 id="source-e-device-possuem-um-comportamento-parecido-com-os-metodos-de-pagamento"><code>source</code> e <code>device</code> possuem um comportamento parecido com os métodos de pagamento?</h2>
+<p>Essas duas outras variáveis categóricas também possuem comportamentos bem característicos, onde existe a preferência por uma determinada classe e variação na distribuição de churn, o que pode ser interessante para nosso modelo de classificação.</p>
+<h3 id="source">Source</h3>
+<p>Aqui vemos que o <code>sc08</code> possui maior preferência de utilização, e também é responsável por maior concentração de churn, tendo uma proporção bem diferente das outras variáveis.</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="n">_</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"source"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">or_pr_cl_df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">"is_churn"</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Source"</span><span class="p">)</span>
+<a href="#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Count"</span><span class="p">)</span>
+<a href="#__codelineno-6-4" id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="img-source-count" src="../img/source-distribution.png"/></p>
+<h3 id="device">Device</h3>
+<p>Nessa outra feature, o <code>dv9</code> é o mais utilizado e responsável por maior presença de churn. Particularmente o <code>dv3</code> tem uma contagem bem alta de não churn, proporcionalmente maior que qualquer outro device.</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="n">_</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"device"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">or_pr_cl_df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">"is_churn"</span><span class="p">)</span>
+<a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Device"</span><span class="p">)</span>
+<a href="#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Count"</span><span class="p">)</span>
+<a href="#__codelineno-7-4" id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="img-device-count" src="../img/device-count.png"/></p>
+<h2 id="como-se-dao-os-pedidos-em-funcao-dos-feriados">Como se dão os pedidos em função dos feriados?</h2>
+<ul>
+<li><strong>TODO:</strong></li>
+</ul>
 </article>
 </div>
 </div>
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: Métricas" class="md-footer__link md-footer__link--prev" href="../metrics/" rel="prev">
+<a aria-label="Previous: Home" class="md-footer__link md-footer__link--prev" href=".." rel="prev">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
 </div>
@@ -261,8 +360,21 @@
 <span class="md-footer__direction">
                 Previous
               </span>
+              Home
+            </div>
+</div>
+</a>
+<a aria-label="Next: Métricas" class="md-footer__link md-footer__link--next" href="../metrics/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
               Métricas
             </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
 </div>
 </a>
 </nav>

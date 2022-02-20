@@ -36,8 +36,8 @@ plugins:
   - mermaid2
 nav:
   - Home: "index.md"
-  - Métricas: "metrics.md"
   - Análise Exploratória de Dados: "eda.md"
+  - Métricas: "metrics.md"
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js
   - javascripts/tablesort.js
