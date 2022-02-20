@@ -22,9 +22,11 @@ install = "*"
 lckr-jupyterlab-variableinspector = "*"
 jupyterlab-system-monitor = "*"
 nbresuse = "*"
+holidays = "==0.12"
+jupyter = "*"
 
 [dev-packages]
 ipykernel = "*"
 
 [requires]
-python_version = "3.9"
+python_version = "3.10"

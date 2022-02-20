@@ -34,6 +34,7 @@ FILE_INFO = [
     },
 ]
 
+
 # downloading data
 def main(file_info: list):
     for specs in file_info:

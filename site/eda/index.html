@@ -7,9 +7,9 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="Luciano" name="author"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.2.3, mkdocs-material-8.1.9" name="generator"/>
+<meta content="mkdocs-1.2.3, mkdocs-material-8.1.11" name="generator"/>
 <title>Análise Exploratória de Dados - Previsão de Churn de Clientes</title>
-<link href="../assets/stylesheets/main.2b4465f4.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.50e68009.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.e6a45f82.min.css" rel="stylesheet"/>
 <meta content="#000000" name="theme-color"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -124,8 +124,23 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#insights">
-    Insights
+<a class="md-nav__link" href="#quanto-nosso-dado-esta-desbalanceado">
+    Quanto nosso dado está desbalanceado?
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#como-as-idades-estao-distribuidas">
+    Como as idades estão distribuídas?
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#como-o-genero-sexual-gender-se-comporta-em-relacao-ao-target">
+    Como o Gênero Sexual (gender) se comporta em relação ao target?
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#onde-esta-localizado-a-maior-quantidade-de-clientes-da-magalu">
+    Onde está localizado a maior quantidade de clientes da Magalu?
   </a>
 </li>
 </ul>
@@ -146,8 +161,23 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#insights">
-    Insights
+<a class="md-nav__link" href="#quanto-nosso-dado-esta-desbalanceado">
+    Quanto nosso dado está desbalanceado?
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#como-as-idades-estao-distribuidas">
+    Como as idades estão distribuídas?
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#como-o-genero-sexual-gender-se-comporta-em-relacao-ao-target">
+    Como o Gênero Sexual (gender) se comporta em relação ao target?
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#onde-esta-localizado-a-maior-quantidade-de-clientes-da-magalu">
+    Onde está localizado a maior quantidade de clientes da Magalu?
   </a>
 </li>
 </ul>
@@ -157,8 +187,65 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
+<p>Antes de iniciar, vamos deixar claro o que um churn aqui nesse desafio.</p>
+<blockquote>
+<p>Churn é todo cliente que deixa de comprar na Magalu após um certo período de tempo.</p>
+</blockquote>
 <h1 id="analise-exploratoria-de-dados">Análise Exploratória de Dados</h1>
-<h2 id="insights">Insights</h2>
+<p>Aqui iremos iniciar nossa análise pelo dataset de treino, que possui algumas informações básicas dos clientes. Mas, antes disso, como estamos falando de um problema de classificação, vale a pena entender o quanto os dados estão desbalanceados.</p>
+<h2 id="quanto-nosso-dado-esta-desbalanceado">Quanto nosso dado está desbalanceado?</h2>
+<blockquote>
+<p>Lembrando que o código completo e os notebooks das EDAs podem ser encontrados no <a href="https://github.com/LucianoBatista/churn-classifier">repositório</a>.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1"># is_churn proportion</span>
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="n">df</span> <span class="o">=</span> <span class="n">client_tr</span><span class="p">[</span><span class="s2">"is_churn"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>
+<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="n">_</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"is_churn"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">client_tr</span><span class="p">)</span>
+<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<ul>
+<li>IMG_CLASSES</li>
+</ul>
+<p>Aqui temos um dados que está um pouco desbalanceado, sendo cerca de 82% de não ocorrência de churn, contra 18% que efetivamente deram churn.</p>
+<h2 id="como-as-idades-estao-distribuidas">Como as idades estão distribuídas?</h2>
+<p>Nesse ponto, achei mais útil converter a variável de data de nascimento (<code>birthdate</code>) em idade. Após fazer essa conversão, foi possível observar como a variável está se comportando em relação ao nosso target.</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="c1"># convertendo em idade</span>
+<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="n">client_tr</span><span class="p">[</span><span class="s2">"age"</span><span class="p">]</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">year</span> <span class="o">-</span> <span class="n">client_tr</span><span class="p">[</span><span class="s2">"birthdate"</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span>
+<a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a>
+<a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="c1"># plotting</span>
+<a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="n">_</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">ecdfplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"age"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">client_tr</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">"is_churn"</span><span class="p">)</span>
+<a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<ul>
+<li>IMG_AGE_CHURN</li>
+</ul>
+<p>Pelas distribuições, vemos que existe uma maior proporção de churn em pessoas com idades mais avançadas.</p>
+<h2 id="como-o-genero-sexual-gender-se-comporta-em-relacao-ao-target">Como o Gênero Sexual (<code>gender</code>) se comporta em relação ao target?</h2>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="n">_</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"gender"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">client_tr</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">"is_churn"</span><span class="p">)</span>
+</code></pre></div>
+<p>Aparentemente, pessoas de ambos os gêneros possuem uma distribuição semelhante a do próprio target. Como menor proporção de churn.</p>
+<h2 id="onde-esta-localizado-a-maior-quantidade-de-clientes-da-magalu">Onde está localizado a maior quantidade de clientes da Magalu?</h2>
+<p>Nós temos, em todos os datasets, duas variáveis de Estado:</p>
+<ul>
+<li><code>state</code>: local onde o cliente reside.</li>
+<li><code>delivery_state</code>: local de destino da entrega do pedido.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="c1"># figure configuration</span>
+<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="n">fig_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">fig_size</span><span class="p">)</span>
+<a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a>
+<a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="c1"># data</span>
+<a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="n">df</span> <span class="o">=</span> <span class="n">client_tr</span><span class="p">[</span><span class="s2">"state"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a>
+<a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="c1"># plotting</span>
+<a href="#__codelineno-3-9" id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="n">_</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"index"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"state"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_v2</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">"state"</span><span class="p">]))</span>
+<a href="#__codelineno-3-10" id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<ul>
+<li>IMG_STATE_DIST</li>
+</ul>
+<p>Nesse primeiro momento, estaremos olhando apenas para <code>state</code>. E, conseguimos ver que existe uma grande concentração de clientes no <strong>Estado st15</strong>, muito mais que nos seguintes Estados. </p>
+<p>Veja também que a distribuição é praticamente idêntica para <em>Churn</em> e <em>não Churn</em>.</p>
 </article>
 </div>
 </div>
@@ -196,8 +283,8 @@
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "..", "features": ["content.code.annotate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.22074ed6.min.js"}</script>
-<script src="../assets/javascripts/bundle.960e086b.min.js"></script>
+<script id="__config" type="application/json">{"base": "..", "features": ["content.code.annotate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.092fa1f6.min.js"}</script>
+<script src="../assets/javascripts/bundle.5a9542cf.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
 <script src="../javascripts/tablesort.js"></script>
 </body>
